@@ -1,15 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Dark Mode</title>
-  </head>
-  <body>
-    <!-- By default, you can have your project use whatever mode your OS is using. You can use "dark:{class}". You can also set your config to use a class instead of using your OS mode -->
-  </body>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <title>Dark Mode</title>
+  <style>
+    .toggle-checkbox:checked {
+      right: 0;
+      border-color: black;
+    }
+
+    .toggle-checkbox:checked+.toggle-label {
+      background-color: #68D391;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- By default, you can have your project use whatever mode your OS is using. You can use "dark:{class}". You can also set your config to use a class instead of using your OS mode -->
+
+
+  <div class="container mx-auto mt-10 bg-white dark:bg-slate-900 rounded-xl px-6 py-8 shadow-xl">
+    <h3 class="text-slate-500 dark:text-white font-medium tracking-tight">Lorem ipsum dolor sit amet</h3>
+    <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+      Suscipit corporis at atque facere consectetur, nihil maxime quaerat id excepturi molestiae. Odit suscipit ducimus
+      ipsam quis?</p>
+  </div>
+
+  <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+    <input type="checkbox" name="toggle" id="toggle-dark"
+      class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
+    <label for="toggle-dark"
+      class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+  </div>
+  <label for="toggle-dark" class="text-xs text-gray-700">Toggle dark mode.</label>
+
+  <script>
+    function main() {
+      const darkToggle = document.querySelector('#toggle-dark')
+      const html = document.querySelector('html')
+
+      const toggleDark = function () {
+        html.classList.toggle('dark')
+      }
+
+      darkToggle.addEventListener('change', toggleDark)
+
+    }
+
+    main()
+  </script>
+</body>
+
 </html>
 
 <!-- Credit for toggle button style
