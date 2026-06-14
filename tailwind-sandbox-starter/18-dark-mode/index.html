@@ -25,11 +25,13 @@
 </head>
 
 <body>
-  <!-- By default, you can have your project use whatever mode your OS is using. You can use "dark:{class}". You can also set your config to use a class instead of using your OS mode -->
+  <!-- Toggle checkbox -->
+  <div id="nav-sentinel" class="h-px"></div>
 
-
-  <div class="container mx-auto mt-10 bg-white dark:bg-slate-900 rounded-xl px-6 py-8 shadow-xl">
+  <!-- Toggle the We need to continue HTML. Probably fill missing parts. Provide closing tags and toggle script. -->
+  <div id="demo" class="container mx-auto mt-10 bg-white dark:bg-slate-900 rounded-xl px-6 py-8 shadow-xl">
     <h3 class="text-slate-500 dark:text-white font-medium tracking-tight">Lorem ipsum dolor sit amet</h3>
+    <!-- Toggle content -->
     <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
       Suscipit corporis at atque facere consectetur, nihil maxime quaerat id excepturi molestiae. Odit suscipit ducimus
       ipsam quis?</p>
@@ -44,16 +46,17 @@
   <label for="toggle-dark" class="text-xs text-gray-700">Toggle dark mode.</label>
 
   <script>
+    // Fn to configure the toggle button to add/remove the "dark" class on the html element. This will trigger the dark mode styles.
+
     function main() {
-      const darkToggle = document.querySelector('#toggle-dark')
-      const html = document.querySelector('html')
-
-      const toggleDark = function () {
-        html.classList.toggle('dark')
+      try {
+        document.querySelector('#toggle-dark')?.addEventListener('change', function () {
+          document.documentElement.classList.toggle('dark', this.checked);
+        });
       }
-
-      darkToggle.addEventListener('change', toggleDark)
-
+      catch (error) {
+        console.error('Error initializing dark mode toggle:', error);
+      }
     }
 
     main()
